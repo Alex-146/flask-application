@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block title %}Login{% endblock %}
+{% block container %}
+
+<h1>Login page</h1>
+
+{% if customValue == '🍏' %}
+  <p>Green apple</p>
+{% elif customValue == '🍎' %}
+  <p>Red apple</p>
+{% else %}
+  <p>{{ customValue }}</p>
+{% endif %}
+
+<form action="/login" method="post">
+  <div>
+    <input type="text" name="name">
+  </div>
+  <div>
+    <input type="password" name="password">
+  </div>
+  <div>
+    <input type="submit" value="Login">
+  </div>
+</form>
+
+{% endblock %}

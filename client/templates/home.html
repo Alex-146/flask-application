@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% block title %}Home{% endblock %}
+{% block container %}
+<h1>Home page</h1>
+<div>
+  <div>
+    <h3>General</h3>
+    <p><b>Id:</b> {{ user.id }}</p>
+    <p><b>Name:</b> {{ user.name }}</p>
+    <p><b>Password hash:</b> {{ user.password }}</p>
+  </div>
+  <div>
+    <h3>Tasks</h3>
+    <form action="/" method="post">
+      <input type="text" name="task">
+      <input type="hidden" name="action" value="add">
+      <input type="submit" value="Add">
+    </form>
+    {% if user.tasks %}
+    <ul>
+      {% for task in user.tasks %}
+      <li>
+        <!-- <form action="/" method="post"> -->
+          <span>{{ task.id }} - {{ task.value }}</span>
+          <button type="submit" onclick="removeTask('{{ task.id }}')">&times;</button>
+          <!-- <input type="hidden" name="action" value="remove"> -->
+          <!-- <input type="hidden" name="task" value="{{ task.id }}"> -->
+        <!-- </form> -->
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No tasks</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
