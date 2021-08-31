@@ -1,5 +1,5 @@
 function removeTask(id) {
-  fetch("/remove-task", {
+  fetch(`/remove-task/${id}`, {
     method: "POST",
     body: JSON.stringify({ id }),
     headers: {
